@@ -19,10 +19,12 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 
 // CORS Configuration - Restrict to frontend origin
+const allowedOrigin = process.env.FRONTEND_URL;
+
 app.use(
   cors({
-    origin: "http://localhost:3000" || process.env.FRONTEND_URL, // Allow from environment variable
-    credentials: true,
+    origin: allowedOrigin,
+    credentials: true, // if you use cookies/auth
   }),
 );
 
