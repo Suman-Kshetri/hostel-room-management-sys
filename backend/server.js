@@ -21,12 +21,7 @@ app.use(helmet());
 // CORS Configuration - Restrict to frontend origin
 app.use(
   cors({
-    origin:
-      [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:5174",
-      ] || process.env.FRONTEND_URL, // Allow from environment variable
+    origin: "http://localhost:3000" || process.env.FRONTEND_URL, // Allow from environment variable
     credentials: true,
   }),
 );
