@@ -204,7 +204,7 @@ const Students: React.FC = () => {
                 value={newContact}
                 onChange={(e) => setNewContact(e.target.value)}
                 className={inputClass}
-                placeholder="+1 234 567 890"
+                placeholder="+977 9860000000"
               />
             </div>
             <div className="flex gap-3 pt-2">
