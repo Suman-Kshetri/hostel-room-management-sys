@@ -133,7 +133,6 @@ const Allocations: React.FC = () => {
     if (modalMode === "add") {
       return students.filter((s) => !s.room_number);
     }
-    // In edit mode: unassigned students + the currently selected student (even if already assigned)
     const selectedId = Number(formStudent);
     return students.filter((s) => !s.room_number || s.id === selectedId);
   };
@@ -142,7 +141,6 @@ const Allocations: React.FC = () => {
     if (modalMode === "add") {
       return rooms.filter((r) => r.current_occupancy < r.capacity);
     }
-    // In edit mode: available rooms + the currently assigned room
     const selectedRoomId = Number(formRoom);
     return rooms.filter(
       (r) => r.current_occupancy < r.capacity || r.id === selectedRoomId,
@@ -181,7 +179,6 @@ const Allocations: React.FC = () => {
             Manage and track student room assignments
           </p>
         </div>
-        {/* Primary button: bg-primary (#aff33e) + text-primary-foreground (#000) */}
         <Button
           onClick={openAddModal}
           className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm"
@@ -197,17 +194,17 @@ const Allocations: React.FC = () => {
           {
             label: "Total Allocations",
             value: allocations.length,
-            icon: <BedDouble className="h-4 w-4 text-primary" />,
+            icon: <BedDouble className="h-4 w-4 text-accent-foreground" />,
           },
           {
             label: "Students Assigned",
             value: new Set(allocations.map((a) => a.student_id)).size,
-            icon: <User className="h-4 w-4 text-primary" />,
+            icon: <User className="h-4 w-4 text-accent-foreground" />,
           },
           {
             label: "Rooms Occupied",
             value: new Set(allocations.map((a) => a.room_number)).size,
-            icon: <Building2 className="h-4 w-4 text-primary" />,
+            icon: <Building2 className="h-4 w-4 text-accent-foreground" />,
           },
         ].map((stat) => (
           <Card
@@ -218,8 +215,7 @@ const Allocations: React.FC = () => {
               <CardDescription className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 {stat.label}
               </CardDescription>
-              {/* Icon inside a small primary-tinted pill */}
-              <span className="flex items-center justify-center h-7 w-7 rounded-md bg-primary/15">
+              <span className="flex items-center justify-center h-7 w-7 rounded-md bg-accent">
                 {stat.icon}
               </span>
             </CardHeader>
@@ -247,7 +243,6 @@ const Allocations: React.FC = () => {
         <CardContent className="p-0">
           <Table>
             <TableHeader>
-              {/* Muted header row */}
               <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
                 <TableHead className="text-muted-foreground font-semibold text-xs uppercase tracking-wider">
                   Student
@@ -293,7 +288,7 @@ const Allocations: React.FC = () => {
                     No allocations yet —{" "}
                     <button
                       onClick={openAddModal}
-                      className="font-semibold text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+                      className="font-semibold text-accent-foreground underline underline-offset-2 hover:text-accent-foreground/80 transition-colors"
                     >
                       assign a student
                     </button>{" "}
@@ -309,9 +304,8 @@ const Allocations: React.FC = () => {
                     {/* Student */}
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        {/* Avatar ring uses --primary (#aff33e) */}
-                        <div className="h-8 w-8 rounded-full bg-primary/15 ring-2 ring-primary/40 flex items-center justify-center shrink-0">
-                          <User className="h-4 w-4 text-primary" />
+                        <div className="h-8 w-8 rounded-full bg-accent ring-2 ring-accent-foreground/20 flex items-center justify-center shrink-0">
+                          <User className="h-4 w-4 text-accent-foreground" />
                         </div>
                         <span className="font-medium text-foreground text-sm">
                           {alloc.student_name}
@@ -319,7 +313,7 @@ const Allocations: React.FC = () => {
                       </div>
                     </TableCell>
 
-                    {/* Room — secondary: bg #334155, text #f8fafc */}
+                    {/* Room */}
                     <TableCell>
                       <Badge className="gap-1.5 font-semibold text-xs bg-secondary text-secondary-foreground border-0 px-2.5 py-1">
                         <Building2 className="h-3 w-3" />
@@ -554,7 +548,6 @@ const Allocations: React.FC = () => {
               >
                 Cancel
               </Button>
-              {/* Primary CTA: lime-green bg (#aff33e) with black text */}
               <Button
                 type="submit"
                 className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
