@@ -60,14 +60,14 @@ const Dashboard: React.FC = () => {
           title="Total Students"
           value={metrics.totalStudents}
           icon={Users}
-          colorClass="bg-primary/10 text-secondary-foreground"
+          colorClass="bg-accent text-accent-foreground"
         />
         {/* secondary bg + secondary-foreground text — slate bg, light icon */}
         <StatCard
           title="Total Rooms"
           value={metrics.totalRooms}
           icon={Bed}
-          colorClass="bg-secondary text-secondary-foreground"
+          colorClass="bg-accent text-accent-foreground"
         />
         {/* accent bg + accent-foreground text — green tint bg, dark green icon */}
         <StatCard
@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
           title="Occupancy Rate"
           value={`${metrics.occupancyRate}%`}
           icon={Percent}
-          colorClass="bg-primary/20 text-secondary-foreground"
+          colorClass="bg-accent text-accent-foreground"
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
